@@ -61,21 +61,24 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun SalutacioPersonal(nom: String){
-        Text(
-            text = "Hola $nom!",
-            color = Color.Red,
-            fontSize = 18.sp,
-            fontStyle = FontStyle.Italic,
-            fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Serif
-        )
+        MaterialTheme() {
+            Text(
+                text = "Hola $nom!",
+                color = Color.Red,
+                fontSize = 18.sp,
+                fontStyle = FontStyle.Italic,
+                fontWeight = FontWeight.Bold,
+                fontFamily = Serif,
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
     }
     @Composable
     private fun Avatar(){
         Image(
             painter = painterResource(R.drawable.qx7jysym_400x400),
             contentDescription = "Logo Refus",
-            modifier = Modifier.height(100.dp).clip(CircleShape).background(Color.Blue)
+            modifier = Modifier.height(100.dp)
         )
     }
     @Composable
