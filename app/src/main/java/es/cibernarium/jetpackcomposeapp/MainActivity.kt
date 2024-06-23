@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import es.cibernarium.jetpackcomposeapp.ui.theme.JetpackComposeAppTheme
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,40 +52,34 @@ class MainActivity : ComponentActivity() {
                     //Tot el que posem aqui serà la part visible de la nostre Aplicació
                     val scrollState = rememberScrollState()
                     Column(
-                        modifier = Modifier.padding(15.dp).verticalScroll(scrollState)
+                        modifier = Modifier
+                            .padding(15.dp)
+                            .verticalScroll(scrollState)
                     ) {
-                        Element()
-                        Element()
-                        Element()
-                        Element()
-                        Element()
-                        Element()
-                        Element()
-                        Element()
-                        Element()
-                        Element()
-                        Element()
-                        Element()
+                        //Usuaris(perfils)
+                        Element(Perfil("Enric","Sòc un usuari molt actiu de la plataforma."))
                     }
                 }
             }
         }
     }
 
+    data class Perfil(val nom: String,val description: String)
+
     @Composable
-    private fun Element(){
+    private fun Element(dades: Perfil){
         Row {
             Avatar()
             Column(
                 modifier = Modifier.padding(15.dp)
             ) {
-                SalutacioPersonal(nom = "Francesc")
-                Description()
+                SalutacioPersonal(nom = dades.nom)
+                Description(description = dades.description)
             }
         }
     }
     @Composable
-    private fun SalutacioPersonal(nom: String){
+    fun SalutacioPersonal(nom: String){
         Text(
             text = "Hola $nom!",
             color = Color.Red,
@@ -95,7 +90,7 @@ class MainActivity : ComponentActivity() {
         )
     }
     @Composable
-    private fun Avatar(){
+    fun Avatar(){
         Image(
             painter = painterResource(R.drawable.qx7jysym_400x400),
             contentDescription = "Logo Refus",
@@ -106,7 +101,7 @@ class MainActivity : ComponentActivity() {
         )
     }
     @Composable
-    private fun Description(){
-        Text(text = "Benvingut a la teva App de montanyisme i a on trobaràs tots els recursos a la teva disposició.")
+    fun Description(description: String){
+        Text(text = description)
     }
 }
