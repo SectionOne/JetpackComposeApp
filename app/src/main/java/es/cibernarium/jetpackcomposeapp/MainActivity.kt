@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -47,8 +49,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //Tot el que posem aqui serà la part visible de la nostre Aplicació
+                    val scrollState = rememberScrollState()
                     Column(
-                        modifier = Modifier.padding(15.dp)
+                        modifier = Modifier.padding(15.dp).verticalScroll(scrollState)
                     ) {
                         Element()
                         Element()
