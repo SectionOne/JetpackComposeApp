@@ -5,7 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -17,9 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontFamily.Companion.Serif
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import es.cibernarium.jetpackcomposeapp.ui.theme.JetpackComposeAppTheme
 
@@ -34,35 +38,30 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //Tot el que posem aqui serà la part visible de la nostre Aplicació
-                    /*Text(
-                        text = "Hello world!",
-                        color = Color.Red,
-                        fontSize = 18.sp,
-                        fontStyle = FontStyle.Italic,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = FontFamily.Serif
-                    )*/
-                    Column {
-                        Button(
-                            onClick = { /*TODO*/},
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue, contentColor = Color.Cyan)
-                        ){
-                            Text(text = "Opcio 1")
-                        }
-                        Button(onClick = { /*TODO*/},
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.Red, contentColor = Color.Cyan)
-                        ){
-                            Text(text = "Opcio 2")
-                        }
-                        Button(onClick = { /*TODO*/},
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.Green, contentColor = Color.Cyan)
-                        ){
-                            Text(text = "Opcio 3")
-                        }
-
+                    Row(
+                        modifier = Modifier.padding(15.dp).fillMaxWidth()
+                    ) {
+                        Serveis()
+                        Description()
                     }
                 }
             }
         }
+    }
+
+    @Composable
+    private fun Serveis(){
+        Text(
+            text = "Web Development\nHosting\nWeb Apps\nDesktop Apps",
+            color = Color.Black,
+            fontSize = 18.sp,
+            fontStyle = FontStyle.Italic,
+            fontWeight = FontWeight.Bold,
+            fontFamily = Serif
+        )
+    }
+    @Composable
+    private fun Description(){
+        Text(text = "Benvingut a la teva consultora experta a on estem a la teva disposició.")
     }
 }
