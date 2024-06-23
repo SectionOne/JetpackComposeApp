@@ -40,31 +40,21 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //Tot el que posem aqui serà la part visible de la nostre Aplicació
-                    Row(
-                        modifier = Modifier.padding(15.dp).fillMaxWidth()
-                    ) {
-                        Serveis()
-                        Spacer(modifier = Modifier.width(10.dp))
-                        Description()
-                    }
+                    SalutacioPersonal(nom = "Francesc")
                 }
             }
         }
     }
 
     @Composable
-    private fun Serveis(){
+    private fun SalutacioPersonal(nom: String){
         Text(
-            text = "Web Development\nHosting\nWeb Apps\nDesktop Apps",
-            color = Color.Black,
+            text = "Hola $nom!",
+            color = Color.Red,
             fontSize = 18.sp,
             fontStyle = FontStyle.Italic,
             fontWeight = FontWeight.Bold,
-            fontFamily = Serif
+            fontFamily = FontFamily.Serif
         )
-    }
-    @Composable
-    private fun Description(){
-        Text(text = "Benvingut a la teva consultora experta a on estem a la teva disposició.")
     }
 }
