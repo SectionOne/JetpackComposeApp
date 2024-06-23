@@ -22,6 +22,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -47,7 +48,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //Tot el que posem aqui serà la part visible de la nostre Aplicació
                     Column(
-                        modifier = Modifier.padding(15.dp)
+                        modifier = Modifier.padding(15.dp).fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
 
                         Avatar()
