@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -32,16 +33,19 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //Tot el que posem aqui serà la part visible de la nostre Aplicació
-                    Text(
+                    /*Text(
                         text = "Hello world!",
                         color = Color.Red,
                         fontSize = 18.sp,
                         fontStyle = FontStyle.Italic,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Serif
-                    )
-
-                    Button(onClick = { /*TODO*/}){}
+                    )*/
+                    Column {
+                        Button(onClick = { /*TODO*/ }) {
+                            Text(text = "Opciò 1")
+                        }
+                    }
                 }
             }
         }
