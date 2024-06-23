@@ -38,6 +38,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import es.cibernarium.jetpackcomposeapp.ui.theme.JetpackComposeAppTheme
 
+private val perfils: List<Perfil> = listOf(
+    Perfil("Enric","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Marc","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Joana","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Iria","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Helena","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Tomeu","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Simon","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Enriqueta","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Sonia","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Joan","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Lidia","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Sandra","Sòc un usuari molt actiu de la plataforma."),
+    Perfil("Mario","Sòc un usuari molt actiu de la plataforma.")
+)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,16 +71,24 @@ class MainActivity : ComponentActivity() {
                             .padding(15.dp)
                             .verticalScroll(scrollState)
                     ) {
-                        //Usuaris(perfils)
-                        Element(Perfil("Enric","Sòc un usuari molt actiu de la plataforma."))
+                        Usuaris(perfils)
+                        //Element(Perfil("Enric","Sòc un usuari molt actiu de la plataforma."))
                     }
                 }
             }
         }
     }
-
+}
     data class Perfil(val nom: String,val description: String)
 
+    @Composable
+    fun Usuaris(perfils: List<Perfil>) {
+        Column {
+            perfils.forEach { dades ->
+                Element(dades)
+            }
+        }
+    }
     @Composable
     private fun Element(dades: Perfil){
         Row {
@@ -104,4 +127,3 @@ class MainActivity : ComponentActivity() {
     fun Description(description: String){
         Text(text = description)
     }
-}
