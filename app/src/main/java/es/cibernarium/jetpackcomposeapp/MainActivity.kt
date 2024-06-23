@@ -40,7 +40,12 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //Tot el que posem aqui serà la part visible de la nostre Aplicació
-                    SalutacioPersonal(nom = "Francesc")
+                    Column(
+                        modifier = Modifier.padding(15.dp)
+                    ) {
+                        SalutacioPersonal(nom = "Francesc")
+                        Text(text = "Benvingut a la teva App de montanyisme i a on trobaràs tots els recursos a la teva disposició.")
+                    }
                 }
             }
         }
