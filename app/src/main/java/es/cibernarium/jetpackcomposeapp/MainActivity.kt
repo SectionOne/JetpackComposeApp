@@ -43,7 +43,10 @@ class MainActivity : ComponentActivity() {
                     )*/
                     Column {
                         Button(onClick = { /*TODO*/ }) {
-                            Text(text = "Opciò 1")
+                            Column {
+                                Text(text = "Opcio 1")
+                                Text(text = "Plus")
+                            }
                         }
                     }
                 }
