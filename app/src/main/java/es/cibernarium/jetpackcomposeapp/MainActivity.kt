@@ -48,13 +48,20 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //Tot el que posem aqui serà la part visible de la nostre Aplicació
                     Column(
-                        modifier = Modifier.padding(15.dp).fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally
+                        modifier = Modifier.padding(15.dp)
                     ) {
-
-                        Avatar()
-                        SalutacioPersonal(nom = "Francesc")
-                        Description()
+                        Element()
+                        Element()
+                        Element()
+                        Element()
+                        Element()
+                        Element()
+                        Element()
+                        Element()
+                        Element()
+                        Element()
+                        Element()
+                        Element()
                     }
                 }
             }
@@ -62,25 +69,37 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun SalutacioPersonal(nom: String){
-        MaterialTheme() {
-            Text(
-                text = "Hola $nom!",
-                color = Color.Red,
-                fontSize = 18.sp,
-                fontStyle = FontStyle.Italic,
-                fontWeight = FontWeight.Bold,
-                fontFamily = Serif,
-                style = MaterialTheme.typography.titleMedium
-            )
+    private fun Element(){
+        Row {
+            Avatar()
+            Column(
+                modifier = Modifier.padding(15.dp)
+            ) {
+                SalutacioPersonal(nom = "Francesc")
+                Description()
+            }
         }
+    }
+    @Composable
+    private fun SalutacioPersonal(nom: String){
+        Text(
+            text = "Hola $nom!",
+            color = Color.Red,
+            fontSize = 18.sp,
+            fontStyle = FontStyle.Italic,
+            fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily.Serif
+        )
     }
     @Composable
     private fun Avatar(){
         Image(
             painter = painterResource(R.drawable.qx7jysym_400x400),
             contentDescription = "Logo Refus",
-            modifier = Modifier.height(100.dp)
+            modifier = Modifier
+                .height(100.dp)
+                .clip(CircleShape)
+                .background(Color.Blue)
         )
     }
     @Composable
