@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -42,12 +43,23 @@ class MainActivity : ComponentActivity() {
                         fontFamily = FontFamily.Serif
                     )*/
                     Column {
-                        Button(onClick = { /*TODO*/ }) {
-                            Column {
-                                Text(text = "Opcio 1")
-                                Text(text = "Plus")
-                            }
+                        Button(
+                            onClick = { /*TODO*/},
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue, contentColor = Color.Cyan)
+                        ){
+                            Text(text = "Opcio 1")
                         }
+                        Button(onClick = { /*TODO*/},
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Red, contentColor = Color.Cyan)
+                        ){
+                            Text(text = "Opcio 2")
+                        }
+                        Button(onClick = { /*TODO*/},
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Green, contentColor = Color.Cyan)
+                        ){
+                            Text(text = "Opcio 3")
+                        }
+
                     }
                 }
             }
