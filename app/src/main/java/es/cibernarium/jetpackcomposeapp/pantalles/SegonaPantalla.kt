@@ -27,8 +27,10 @@ fun ContingutCos1(navController: NavController){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Intranet")
-        Button(onClick = { /*TODO*/ }) {
+        Text("Segona Pantalla")
+        Button(onClick = {
+            navController.popBackStack()
+        }) {
             Text("Navega")
         }
     }

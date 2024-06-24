@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import es.cibernarium.jetpackcomposeapp.navegacio.PantallesApp
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -28,7 +29,9 @@ fun ContingutCos(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Intranet")
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = {
+            navController.navigate(route = PantallesApp.SegonaPantalla.route)
+        }) {
             Text("Navega")
         }
     }
