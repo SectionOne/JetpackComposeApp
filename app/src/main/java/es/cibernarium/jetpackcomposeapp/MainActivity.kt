@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -90,14 +91,21 @@ class MainActivity : ComponentActivity() {
         }
     }
     @Composable
-    private fun Element(dades: Perfil){
+    fun Element(dades: Perfil){
+        //Definim variable de control sobre l'estat de clickable
+        var expanded = false
         Row {
             Avatar()
             Column(
-                modifier = Modifier.padding(15.dp)
+                modifier = Modifier.padding(15.dp).clickable {
+                    expanded = !expanded
+                }
             ) {
                 SalutacioPersonal(nom = dades.nom)
-                Description(description = dades.description, linies = 1)
+                Description(
+                    description = dades.description,
+                    if (expanded) Int.MAX_VALUE else 1
+                )
             }
         }
     }
