@@ -21,10 +21,19 @@ fun PrimeraPantalla(){
 
 @Composable
 fun ContingutCos(){
-    Column() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text("Intranet")
         Button(onClick = { /*TODO*/ }) {
             Text("Navega")
         }
     }
+}
+
+@Composable
+fun VistaPrevia(){
+    PrimeraPantalla()
 }
