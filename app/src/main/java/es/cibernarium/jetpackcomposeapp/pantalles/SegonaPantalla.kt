@@ -10,17 +10,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SegonaPantalla(){
+fun SegonaPantalla(navController: NavController){
     //Scaffold (
-        ContingutCos1()
+        ContingutCos1(navController)
     //}
 }
 
 @Composable
-fun ContingutCos1(){
+fun ContingutCos1(navController: NavController){
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

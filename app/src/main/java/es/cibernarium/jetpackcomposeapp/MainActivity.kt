@@ -31,6 +31,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import es.cibernarium.jetpackcomposeapp.navegacio.NavegacioApp
 import es.cibernarium.jetpackcomposeapp.pantalles.PrimeraPantalla
 import es.cibernarium.jetpackcomposeapp.ui.theme.JetpackComposeAppTheme
 
@@ -67,7 +68,8 @@ class MainActivity : ComponentActivity() {
                             .padding(15.dp)
                             .verticalScroll(scrollState)
                     ) {
-                        PrimeraPantalla()
+                        //PrimeraPantalla()
+                        NavegacioApp()
                         //Usuaris(perfils)
                         //Element(Perfil("Enric","Sòc un usuari molt actiu de la plataforma."))
                     }
