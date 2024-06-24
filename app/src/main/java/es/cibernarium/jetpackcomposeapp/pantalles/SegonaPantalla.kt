@@ -13,14 +13,14 @@ import androidx.compose.ui.Modifier
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun PrimeraPantalla(){
+fun SegonaPantalla(){
     //Scaffold (
-        ContingutCos()
+        ContingutCos1()
     //}
 }
 
 @Composable
-fun ContingutCos(){
+fun ContingutCos1(){
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
