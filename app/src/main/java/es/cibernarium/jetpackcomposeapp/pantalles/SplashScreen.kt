@@ -7,16 +7,25 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import es.cibernarium.jetpackcomposeapp.R
+import es.cibernarium.jetpackcomposeapp.navegacio.PantallesApp
+import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(){
+fun SplashScreen(navController: NavController){
+    LaunchedEffect(key1 = true) {
+        delay(5000)
+        navController.popBackStack() //Buidem el historial per impedir que pugui tornar el SplashScreen
+        navController.navigate(PantallesApp.PrimeraPantalla.route)
+    }
     Splash()
 }
 

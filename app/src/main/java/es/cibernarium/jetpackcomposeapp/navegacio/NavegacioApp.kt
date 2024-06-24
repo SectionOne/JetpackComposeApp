@@ -8,11 +8,15 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import es.cibernarium.jetpackcomposeapp.pantalles.PrimeraPantalla
 import es.cibernarium.jetpackcomposeapp.pantalles.SegonaPantalla
+import es.cibernarium.jetpackcomposeapp.pantalles.SplashScreen
 
 @Composable
 fun NavegacioApp(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = PantallesApp.PrimeraPantalla.route) {
+    NavHost(navController = navController, startDestination = PantallesApp.SplashScreen.route) {
+        composable(route = PantallesApp.SplashScreen.route) {
+            SplashScreen(navController)
+        }
         composable(route = PantallesApp.PrimeraPantalla.route) {
             PrimeraPantalla(navController)
         }
