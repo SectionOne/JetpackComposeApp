@@ -97,7 +97,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.padding(15.dp)
             ) {
                 SalutacioPersonal(nom = dades.nom)
-                Description(description = dades.description)
+                Description(description = dades.description, linies = 1)
             }
         }
     }
@@ -124,6 +124,6 @@ class MainActivity : ComponentActivity() {
         )
     }
     @Composable
-    fun Description(description: String){
-        Text(text = description)
+    fun Description(description: String,linies: Int = Int.MAX_VALUE){
+        Text(text = description, maxLines = linies)
     }
