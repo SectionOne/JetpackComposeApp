@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun PrimeraPantalla(){
-    //Scaffold (
+    //Scaffold {
         ContingutCos()
     //}
 }
