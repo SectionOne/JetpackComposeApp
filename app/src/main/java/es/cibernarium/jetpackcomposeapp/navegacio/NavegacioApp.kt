@@ -1,9 +1,11 @@
 package es.cibernarium.jetpackcomposeapp.navegacio
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import es.cibernarium.jetpackcomposeapp.pantalles.PrimeraPantalla
 import es.cibernarium.jetpackcomposeapp.pantalles.SegonaPantalla
 
@@ -14,8 +16,12 @@ fun NavegacioApp(){
         composable(route = PantallesApp.PrimeraPantalla.route) {
             PrimeraPantalla(navController)
         }
-        composable(route = PantallesApp.SegonaPantalla.route) {
-            SegonaPantalla(navController)
+        composable(route = PantallesApp.SegonaPantalla.route + "/{text}",
+            arguments = listOf(navArgument(name = "text"){
+                type = NavType.StringType
+            })
+        ) {
+            SegonaPantalla(navController,it.arguments?.getString("text"))
         }
     }
 }

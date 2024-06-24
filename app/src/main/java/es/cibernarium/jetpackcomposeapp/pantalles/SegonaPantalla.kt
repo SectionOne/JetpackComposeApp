@@ -14,24 +14,25 @@ import androidx.navigation.NavController
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SegonaPantalla(navController: NavController){
+fun SegonaPantalla(navController: NavController, text:String?){
     //Scaffold (
-        ContingutCos1(navController)
+        ContingutCos1(navController,text)
     //}
 }
 
 @Composable
-fun ContingutCos1(navController: NavController){
+fun ContingutCos1(navController: NavController, text: String?){
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Segona Pantalla")
+        text?.let {Text(it)}
         Button(onClick = {
             navController.popBackStack()
         }) {
-            Text("Navega")
+            Text("Tornar Enrere")
         }
     }
 }

@@ -30,7 +30,7 @@ fun ContingutCos(navController: NavController){
     ) {
         Text("Intranet")
         Button(onClick = {
-            navController.navigate(route = PantallesApp.SegonaPantalla.route)
+            navController.navigate(route = PantallesApp.SegonaPantalla.route + "/Text enviat")
         }) {
             Text("Navega")
         }
