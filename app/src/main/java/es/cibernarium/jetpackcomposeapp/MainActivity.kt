@@ -41,6 +41,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import es.cibernarium.jetpackcomposeapp.pantalles.PrimeraPantalla
 import es.cibernarium.jetpackcomposeapp.ui.theme.JetpackComposeAppTheme
 
 private val perfils: List<Perfil> = listOf(
@@ -76,7 +77,8 @@ class MainActivity : ComponentActivity() {
                             .padding(15.dp)
                             .verticalScroll(scrollState)
                     ) {
-                        Usuaris(perfils)
+                        PrimeraPantalla()
+                        //Usuaris(perfils)
                         //Element(Perfil("Enric","Sòc un usuari molt actiu de la plataforma."))
                     }
                 }
@@ -97,13 +99,16 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun Element(dades: Perfil){
         //Definim variable de control sobre l'estat de clickable
+        //var expanded = false
         var expanded by remember{mutableStateOf(false)}
         Row {
             Avatar()
             Column(
-                modifier = Modifier.padding(15.dp).clickable {
-                    expanded = !expanded
-                }
+                modifier = Modifier
+                    .padding(15.dp)
+                    .clickable {
+                        expanded = !expanded
+                    }
             ) {
                 SalutacioPersonal(nom = dades.nom)
                 Description(
