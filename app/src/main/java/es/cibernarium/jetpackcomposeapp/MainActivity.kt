@@ -1,6 +1,7 @@
 package es.cibernarium.jetpackcomposeapp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -32,6 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import es.cibernarium.jetpackcomposeapp.navegacio.NavegacioApp
+import es.cibernarium.jetpackcomposeapp.navegacio.PantallesApp
 import es.cibernarium.jetpackcomposeapp.pantalles.PrimeraPantalla
 import es.cibernarium.jetpackcomposeapp.ui.theme.JetpackComposeAppTheme
 
@@ -52,6 +55,7 @@ private val perfils: List<Perfil> = listOf(
 )
 
 class MainActivity : ComponentActivity() {
+    lateinit var usersDBHelper: miSQLiteHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -70,8 +74,6 @@ class MainActivity : ComponentActivity() {
                     ) {
                         //PrimeraPantalla()
                         NavegacioApp()
-                        //Usuaris(perfils)
-                        //Element(Perfil("Enric","Sòc un usuari molt actiu de la plataforma."))
                     }
                 }
             }

@@ -34,5 +34,10 @@ fun ContingutCos(navController: NavController){
         }) {
             Text("Navega")
         }
+        Button(onClick = {
+            navController.navigate(route = PantallesApp.LoginScreen.route)
+        }) {
+            Text("Zona Privada")
+        }
     }
 }

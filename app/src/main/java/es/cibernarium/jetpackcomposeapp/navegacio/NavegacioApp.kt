@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import es.cibernarium.jetpackcomposeapp.pantalles.LoginScreen
 import es.cibernarium.jetpackcomposeapp.pantalles.PrimeraPantalla
 import es.cibernarium.jetpackcomposeapp.pantalles.SegonaPantalla
 import es.cibernarium.jetpackcomposeapp.pantalles.SplashScreen
@@ -16,6 +17,9 @@ fun NavegacioApp(){
     NavHost(navController = navController, startDestination = PantallesApp.SplashScreen.route) {
         composable(route = PantallesApp.SplashScreen.route) {
             SplashScreen(navController)
+        }
+        composable(route = PantallesApp.LoginScreen.route) {
+            LoginScreen(navController)
         }
         composable(route = PantallesApp.PrimeraPantalla.route) {
             PrimeraPantalla(navController)
