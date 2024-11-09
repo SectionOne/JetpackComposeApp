@@ -6,6 +6,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -16,6 +21,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
@@ -87,6 +94,11 @@ fun ClauInput(
     labelId: String,
     clauVisible: MutableState<Boolean>
 ) {
+    //Condicional per ocultar o mostrar la clau
+    val visualTransformation = if(clauVisible.value)
+        VisualTransformation.None
+    else PasswordVisualTransformation()
+
     OutlinedTextField(
         value = clauState.value,
         onValueChange = {clauState.value = it},
@@ -98,7 +110,33 @@ fun ClauInput(
         modifier = Modifier
             .padding(bottom = 10.dp, start = 10.dp, end = 10.dp)
             .fillMaxWidth(),
+        visualTransformation = visualTransformation,
+        //Icona per mostrar o ocultar la clau
+        trailingIcon = {
+            //Aquesta icona només tindrà que apareixer quan el camp tingui algún caràcter
+            if(clauState.value.isNotBlank()){
+                PasswordVisibleIcon(clauVisible)
+            } else null
+        }
         )
+}
+
+@Composable
+fun PasswordVisibleIcon(
+    clauVisible: MutableState<Boolean>
+) {
+    val image =
+        if(clauVisible.value)
+            Icons.Default.VisibilityOff
+        else
+            Icons.Default.Visibility
+    IconButton(onClick = {
+        clauVisible.value = !clauVisible.value
+    }) {
+        Icon(
+            imageVector = image,
+            contentDescription = "")
+    }
 }
 
 //Creem la funció per la entrada del email
