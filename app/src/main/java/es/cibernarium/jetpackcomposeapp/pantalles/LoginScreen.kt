@@ -61,12 +61,44 @@ fun UserForm(
     val email = rememberSaveable {
         mutableStateOf("")
     }
+    val clau = rememberSaveable {
+        mutableStateOf("")
+    }
+    //Crearem una nova variable d'estat per saber si la clau es visible o no
+    val clauVisible = rememberSaveable {
+        mutableStateOf(false)
+    }
     //Crearem una columna perque estigui situat en vertical
     Column (horizontalAlignment = Alignment.CenterHorizontally){
         EmailInput(
             emailState = email
         )
+        ClauInput(
+            clauState = clau,
+            labelId = "Clau",
+            clauVisible = clauVisible
+        )
     }
+}
+
+@Composable
+fun ClauInput(
+    clauState: MutableState<String>,
+    labelId: String,
+    clauVisible: MutableState<Boolean>
+) {
+    OutlinedTextField(
+        value = clauState.value,
+        onValueChange = {clauState.value = it},
+        label = { Text(text = labelId)},
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password
+        ),
+        modifier = Modifier
+            .padding(bottom = 10.dp, start = 10.dp, end = 10.dp)
+            .fillMaxWidth(),
+        )
 }
 
 //Creem la funció per la entrada del email
