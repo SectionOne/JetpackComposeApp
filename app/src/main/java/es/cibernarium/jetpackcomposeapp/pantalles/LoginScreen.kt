@@ -37,6 +37,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import es.cibernarium.jetpackcomposeapp.miSQLiteHelper
+import es.cibernarium.jetpackcomposeapp.navegacio.PantallesApp
 
 @Composable
 fun LoginScreen(navController: NavController,usersDBHelper: miSQLiteHelper){
@@ -60,6 +61,7 @@ fun LoginScreen(navController: NavController,usersDBHelper: miSQLiteHelper){
                     if(usersDBHelper.login(email.toString(),clau.toString())) {
                         //Afegim un log per saber si és submiteja el login
                         Log.d("Refugios Libres", "Loguejant amb $email i $clau")
+                        navController.navigate(PantallesApp.PrivadaPantalla.route)
                     } else {
                         //Afegim un log per saber si és submiteja el login
                         Log.d("Refugios Libres", "Error loguejant amb $email i $clau")
