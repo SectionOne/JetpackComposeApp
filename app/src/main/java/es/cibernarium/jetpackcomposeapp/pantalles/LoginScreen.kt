@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -59,6 +60,8 @@ fun LoginScreen(navController: NavController){
                     isCreateAccount = true
                 ){
                     email, clau ->
+                    //Afegim un log per saber si és crea un compte
+                    Log.d("Refugios Libres","Creant un compte amb $email i $clau")
                 }
             }
         }
@@ -87,6 +90,8 @@ fun UserForm(
         email.value.trim().isNotEmpty() &&
                 clau.value.trim().isNotEmpty()
     }
+    //Obtenim el estat de visibilitat del teclat el fer submit
+    val keyboardController = LocalSoftwareKeyboardController.current
     //Crearem una columna perque estigui situat en vertical
     Column (horizontalAlignment = Alignment.CenterHorizontally){
         EmailInput(
@@ -104,6 +109,8 @@ fun UserForm(
         ){
             //Invoquem la funció onDone() per a quan estigui tot gestioni el formulari
             onDone(email.value.trim(),clau.value.trim())
+            //Amaguem el teclat el fer submit
+            keyboardController?.hide()
         }
     }
 }
