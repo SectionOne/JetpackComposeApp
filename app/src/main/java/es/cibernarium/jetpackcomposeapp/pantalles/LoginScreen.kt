@@ -1,5 +1,6 @@
 package es.cibernarium.jetpackcomposeapp.pantalles
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,6 +50,8 @@ fun LoginScreen(navController: NavController){
                     isCreateAccount = false
                 ){
                     email, clau ->
+                    //Afegim un log per saber si és submiteja el login
+                    Log.d("Refugios Libres","Loguejant amb $email i $clau")
                 }
             } else {
                 Text(text = "Crea un compte")
@@ -77,6 +81,12 @@ fun UserForm(
     val clauVisible = rememberSaveable {
         mutableStateOf(false)
     }
+    //Crearem una variable per saber si tots els camps són vàlids
+    val valid = remember(email.value,clau.value){
+        //Obtenim el valor, eliminem espais en blanc i validem que no està buit
+        email.value.trim().isNotEmpty() &&
+                clau.value.trim().isNotEmpty()
+    }
     //Crearem una columna perque estigui situat en vertical
     Column (horizontalAlignment = Alignment.CenterHorizontally){
         EmailInput(
@@ -88,21 +98,30 @@ fun UserForm(
             clauVisible = clauVisible
         )
         SubmitButton(
-            textId = if(isCreateAccount) "Crear compte" else "Login"
-        )
+            textId = if(isCreateAccount) "Crear compte" else "Login",
+            //Rebem el valor de si els camps estàn ok de la variable valid
+            inputValid = valid
+        ){
+            //Invoquem la funció onDone() per a quan estigui tot gestioni el formulari
+            onDone(email.value.trim(),clau.value.trim())
+        }
     }
 }
 
 @Composable
 fun SubmitButton(
-    textId: String
+    textId: String,
+    //Rebem el valor de inputValid
+    inputValid: Boolean,
+    //Desenvolupem la acció onClick
+    onClic: ()->Unit
 ) {
-    Button(onClick = {
-        },
+    Button(onClick = onClic, //També aqui enllaçem amb el onClic
         modifier = Modifier
             .padding(3.dp)
             .fillMaxWidth(),
-        shape = CircleShape
+        shape = CircleShape,
+        enabled = inputValid //Habilitem el botò segons si inputValid és true
     ){
         Text(text = textId,
             modifier = Modifier
