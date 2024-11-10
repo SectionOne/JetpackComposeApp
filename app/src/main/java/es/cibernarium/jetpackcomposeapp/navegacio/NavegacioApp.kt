@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import es.cibernarium.jetpackcomposeapp.miSQLiteHelper
 import es.cibernarium.jetpackcomposeapp.pantalles.LoginScreen
 import es.cibernarium.jetpackcomposeapp.pantalles.PrimeraPantalla
+import es.cibernarium.jetpackcomposeapp.pantalles.PrivadaPantalla
 import es.cibernarium.jetpackcomposeapp.pantalles.SegonaPantalla
 import es.cibernarium.jetpackcomposeapp.pantalles.SplashScreen
 
@@ -24,6 +25,9 @@ fun NavegacioApp(usersDBHelper: miSQLiteHelper){
         }
         composable(route = PantallesApp.PrimeraPantalla.route) {
             PrimeraPantalla(navController)
+        }
+        composable(route = PantallesApp.PrivadaPantalla.route) {
+            PrivadaPantalla(navController,usersDBHelper)
         }
         composable(route = PantallesApp.SegonaPantalla.route + "/{text}",
             arguments = listOf(navArgument(name = "text"){

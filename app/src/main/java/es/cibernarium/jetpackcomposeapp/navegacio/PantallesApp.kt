@@ -5,4 +5,5 @@ sealed class PantallesApp(val route: String){
     object LoginScreen:PantallesApp("login_screen")
     object PrimeraPantalla:PantallesApp("primera_pantalla")
     object SegonaPantalla:PantallesApp("segona_pantalla")
+    object PrivadaPantalla:PantallesApp("privada_pantalla")
 }

@@ -57,4 +57,24 @@ class miSQLiteHelper(context: Context):SQLiteOpenHelper (
         db.close() //Tanquem la connexió amb la bd
         return resposta.moveToFirst()
     }
+
+    fun readAll():ArrayList<String>{
+        //Crearem un element ContentValues que consisteix en un mapa
+        // format per conjunts de claus i valors
+        val usuaris: ArrayList<String> = arrayListOf<String>()
+
+        //Guardarem ara les dades
+        val db = this.readableDatabase //Demanem accés en modo escriptura
+        //Consulta a la bbdd
+        var resposta = db.rawQuery("SELECT * FROM users",null)
+
+        if(resposta.moveToFirst()){
+            do {
+                usuaris.add("Nom: " + resposta.getInt(1).toString() + " Clau: " +
+                        resposta.getInt(2).toString() + "\n")
+            } while(resposta.moveToNext())
+        }
+        db.close() //Tanquem la connexió amb la bd
+        return usuaris
+    }
 }
