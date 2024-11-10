@@ -57,8 +57,13 @@ fun LoginScreen(navController: NavController,usersDBHelper: miSQLiteHelper){
                 UserForm(
                     isCreateAccount = false
                 ) { email, clau ->
-                    //Afegim un log per saber si és submiteja el login
-                    Log.d("Refugios Libres", "Loguejant amb $email i $clau")
+                    if(usersDBHelper.login(email.toString(),clau.toString())) {
+                        //Afegim un log per saber si és submiteja el login
+                        Log.d("Refugios Libres", "Loguejant amb $email i $clau")
+                    } else {
+                        //Afegim un log per saber si és submiteja el login
+                        Log.d("Refugios Libres", "Error loguejant amb $email i $clau")
+                    }
                 }
             } else {
                 Text(text = "Crea un compte")

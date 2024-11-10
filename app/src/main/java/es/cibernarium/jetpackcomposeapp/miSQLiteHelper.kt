@@ -40,4 +40,21 @@ class miSQLiteHelper(context: Context):SQLiteOpenHelper (
         db.insert("users",null, dades)
         db.close() //Tanquem la connexió amb la bd
     }
+
+    fun login(email:String,clau:String):Boolean{
+        //Crearem un element ContentValues que consisteix en un mapa
+        // format per conjunts de claus i valors
+        val dades = ContentValues()
+        dades.put("email",email) //Crearem el camp o clau nom i li asignem
+        // el valor amb la variable rebuda nom
+        dades.put("clau",clau)
+
+        //Guardarem ara les dades
+        val db = this.readableDatabase //Demanem accés en modo escriptura
+        //Nom taula, comportament del nullColumnHack, dades
+        var resposta = db.rawQuery("SELECT email,clau FROM users WHERE email = '$email' AND clau = '$clau' LIMIT 1",null)
+        Log.d("Refugios Libres", resposta.moveToFirst().toString() )
+        db.close() //Tanquem la connexió amb la bd
+        return resposta.moveToFirst()
+    }
 }
