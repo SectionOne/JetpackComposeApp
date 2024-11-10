@@ -1,10 +1,14 @@
 package es.cibernarium.jetpackcomposeapp.pantalles
 
 import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -14,6 +18,7 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -24,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -43,26 +49,49 @@ fun LoginScreen(navController: NavController){
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
-        ){
+        ) {
             //Definim la condició que determina la logica segons la situació
-            if(showLoginForm.value){
+            if (showLoginForm.value) {
                 Text(text = "Iniciar sessió")
                 UserForm(
                     isCreateAccount = false
-                ){
-                    email, clau ->
+                ) { email, clau ->
                     //Afegim un log per saber si és submiteja el login
-                    Log.d("Refugios Libres","Loguejant amb $email i $clau")
+                    Log.d("Refugios Libres", "Loguejant amb $email i $clau")
                 }
             } else {
                 Text(text = "Crea un compte")
                 UserForm(
                     isCreateAccount = true
-                ){
-                    email, clau ->
+                ) { email, clau ->
                     //Afegim un log per saber si és crea un compte
-                    Log.d("Refugios Libres","Creant un compte amb $email i $clau")
+                    Log.d("Refugios Libres", "Creant un compte amb $email i $clau")
                 }
+            }
+
+            //Crearem un espaiador
+            Spacer(modifier = Modifier.height(15.dp))
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                //Realitzem els textes per cada ocasió
+                val text1 =
+                    if (showLoginForm.value) "No tens compte?"
+                    else "Ja tens compte?"
+                val text2 =
+                    if (showLoginForm.value) "Registra't"
+                    else "Inicia sessió"
+                //Crearem els dos components de texte
+                Text(text = text1)
+                Text(text = text2,
+                    //Afegim un modificador per fer-ho clickable i modificar el valor
+                    //showLoginForm per mostrar/ocultar el registre o login
+                    modifier = Modifier
+                        .clickable { showLoginForm.value = !showLoginForm.value }
+                        .padding(start = 5.dp),
+                    color = Color.Blue
+                )
             }
         }
     }
