@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
@@ -96,7 +97,13 @@ fun UserForm(
 fun SubmitButton(
     textId: String
 ) {
-    Button(onClick = {}){
+    Button(onClick = {
+        },
+        modifier = Modifier
+            .padding(3.dp)
+            .fillMaxWidth(),
+        shape = CircleShape
+    ){
         Text(text = textId,
             modifier = Modifier
                 .padding(5.dp)
