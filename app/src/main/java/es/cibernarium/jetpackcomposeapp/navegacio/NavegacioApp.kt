@@ -6,20 +6,21 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import es.cibernarium.jetpackcomposeapp.miSQLiteHelper
 import es.cibernarium.jetpackcomposeapp.pantalles.LoginScreen
 import es.cibernarium.jetpackcomposeapp.pantalles.PrimeraPantalla
 import es.cibernarium.jetpackcomposeapp.pantalles.SegonaPantalla
 import es.cibernarium.jetpackcomposeapp.pantalles.SplashScreen
 
 @Composable
-fun NavegacioApp(){
+fun NavegacioApp(usersDBHelper: miSQLiteHelper){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = PantallesApp.SplashScreen.route) {
         composable(route = PantallesApp.SplashScreen.route) {
             SplashScreen(navController)
         }
         composable(route = PantallesApp.LoginScreen.route) {
-            LoginScreen(navController)
+            LoginScreen(navController,usersDBHelper)
         }
         composable(route = PantallesApp.PrimeraPantalla.route) {
             PrimeraPantalla(navController)

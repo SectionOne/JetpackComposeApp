@@ -36,9 +36,10 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import es.cibernarium.jetpackcomposeapp.miSQLiteHelper
 
 @Composable
-fun LoginScreen(navController: NavController){
+fun LoginScreen(navController: NavController,usersDBHelper: miSQLiteHelper){
     //Quan la variable sigui true loguejara; False mostrarà per crear usuari
     val showLoginForm = rememberSaveable {
         mutableStateOf(true)
@@ -64,8 +65,8 @@ fun LoginScreen(navController: NavController){
                 UserForm(
                     isCreateAccount = true
                 ) { email, clau ->
-                    //Afegim un log per saber si és crea un compte
-                    Log.d("Refugios Libres", "Creant un compte amb $email i $clau")
+                    usersDBHelper.afegirDades(email.toString(),clau.toString())
+                    Log.d("Refugios Libres", "Guardant dades $email i $clau")
                 }
             }
 

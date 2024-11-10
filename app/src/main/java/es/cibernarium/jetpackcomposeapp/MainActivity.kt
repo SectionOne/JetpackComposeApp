@@ -58,6 +58,7 @@ class MainActivity : ComponentActivity() {
     lateinit var usersDBHelper: miSQLiteHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        usersDBHelper = miSQLiteHelper(this) //El contexte o scope sera this
         setContent {
             JetpackComposeAppTheme {
                 // A surface container using the 'background' color from the theme
@@ -73,7 +74,7 @@ class MainActivity : ComponentActivity() {
                             .verticalScroll(scrollState)
                     ) {
                         //PrimeraPantalla()
-                        NavegacioApp()
+                        NavegacioApp(usersDBHelper)
                     }
                 }
             }
